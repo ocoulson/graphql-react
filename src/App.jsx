@@ -1,7 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { ApolloProvider, ApolloClient, InMemoryCache, gql } from '@apollo/client';
 import ToDoList from 'components/ToDoList';
+
+import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 
 export const client = new ApolloClient({
   uri: 'http://localhost:3001/graphql',
@@ -9,8 +10,8 @@ export const client = new ApolloClient({
 });
 
 export const getAll = () => client
-  .query({
-    query: gql`
+.query({
+  query: gql`
         query GetTodos {
             getToDos {
                 id,
@@ -19,20 +20,53 @@ export const getAll = () => client
             }
         }
     `
-  })  
-.then(result => console.log(result));
+})
+.then(result => result.data);
 
-function App() {
-  const { data } = getAll();
+export const createTodo = () => client
+.mutate({
+  mutation: gql`
+        mutation createToDo ({
+            createToDoInput: {
+                text: "New item"
+            }
+        })
+        {
+          id,
+          text,
+          completed
+        }
+    `
+}).then(result => console.log(result))
+
+const App = () => {
+  const [todos, setTodos] = React.useState([]);
+
+  const addNewTodo = () => {
+    createTodo();
+  }
+
+  React.useEffect(async () => {
+    const { getToDos } = await getAll();
+    setTodos(getToDos);
+    createTodo();
+
+    return () => setTodos([]);
+  }, [])
+
   return (
-    <ApolloProvider client={client}>
+    <div>
+      <h2>My first Apollo app 🚀</h2>
       <div>
-        <h2>My first Apollo app 🚀</h2>
-        <div>
-          <ToDoList data={data} />
-        </div>
+        <ul>
+          {
+            todos.map((thing) => <li key={thing.id}>{thing.text}</li>)
+          }
+        </ul>
+        <button onClick={() => addNewTodo()}>Add new todo</button>
+        {/*<ToDoList data={getToDos} />*/}
       </div>
-    </ApolloProvider>
+    </div>
   );
 }
 

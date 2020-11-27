@@ -1,24 +1,5 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "declaration": true,
-    "removeComments": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true,
-    "target": "es2017",
-    "sourceMap": true,
-    "outDir": "./dist",
-    "baseUrl": "./",
-    "incremental": true,
-    "skipLibCheck": true
-  },
-  "include": ["src/**/*"]
-}
-
-
-{
-  "compilerOptions": {
     "target": "es5",
     "sourceMap": true,
     "module": "commonjs",
@@ -57,14 +38,3 @@
     "node_modules"
   ]
 }
-
-
-
-
-
-
-
-
-
-
-

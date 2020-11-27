@@ -11,7 +11,7 @@ var extraConfig = {
     port: 3000,
     writeToDisk: true,
     proxy: {
-      '/api': 'localhost:3001',
+      '/api': 'http://localhost:3001/graphql',
     },
     historyApiFallback: {
       rewrites: [
@@ -24,7 +24,7 @@ var extraConfig = {
     new HtmlWebpackPlugin({
       hash: true,
       path: path.resolve('build'),
-      template: path.resolve('src', 'frontend', 'index.html'),
+      template: path.resolve('src', 'index.html'),
       filename: 'index.html',
       chunks: ['app'],
     }),

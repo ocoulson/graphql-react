@@ -2,7 +2,7 @@ var path = require('path');
 
 module.exports = {
   entry: {
-    app: path.resolve('src', 'frontend', 'App'),
+    app: path.resolve('src', 'App'),
   },
   output: {
     path: path.resolve('build'),
@@ -29,7 +29,7 @@ module.exports = {
   resolve: {
     extensions: ['.tsx', '.ts', '.jsx', '.js'],
     modules: [
-      path.join('src', 'frontend'),
+      path.join('src'),
       'node_modules',
     ]
   },
