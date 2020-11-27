@@ -1,0 +1,36 @@
+type Query {
+    getToDos: [ToDo]
+    get(id: Int!): ToDo
+}
+type Mutation {
+    createToDo(createToDoInput: CreateToDoInput!): ToDo
+    updateToDo(updateToDoInput: UpdateToDoInput!): ToDo
+}
+
+type Subscription {
+    toDoAdded: ToDo
+    toDoUpdated: ToDo
+    toDoUpdateFailed: ErrorMessage
+}
+
+type ErrorMessage{
+    message: String!
+}
+
+type ToDo {
+    id: Int!
+    text: String!
+    completed: Boolean!
+}
+
+input CreateToDoInput {
+    text: String!
+}
+
+input UpdateToDoInput {
+    id: Int!
+    text: String
+    completed: Boolean
+}
+
+
