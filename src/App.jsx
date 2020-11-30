@@ -26,17 +26,18 @@ export const getAll = () => client
 export const createTodo = () => client
 .mutate({
   mutation: gql`
-        mutation createToDo ({
-            createToDoInput: {
-                text: "New item"
-            }
-        })
-        {
-          id,
-          text,
-          completed
+   mutation {
+    createToDo (
+        createToDoInput: {
+            text: "New item"
         }
-    `
+    )
+    {
+      id,
+      text,
+      completed
+    }
+}`
 }).then(result => console.log(result))
 
 const App = () => {
