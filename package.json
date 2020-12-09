@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "GraphQL test project",
   "scripts": {
-    "start:fe": "webpack-dev-server --hot --config=webpack/devServer.config.js",
+    "start:dev": "webpack-dev-server --hot --config=webpack/devServer.config.js",
     "start:prod": "node dist/main",
     "lint": "eslint '{src,apps,libs,test}/**/*.ts' --fix",
     "test": "jest",

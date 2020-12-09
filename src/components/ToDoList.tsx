@@ -11,13 +11,12 @@ interface Props {
 }
 
 const ToDoList = ({ data }: Props) => {
-
-   return (
-     <ul>
-       {
-         data.map((thing) => <li>{thing.text}</li>)
-       }
-     </ul>
+  return (
+    <ul>
+      {
+        data.map((thing) => <li>{thing.text}</li>)
+      }
+    </ul>
   )
 };
 
